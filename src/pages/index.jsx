@@ -5,31 +5,30 @@ import Lolly from "./../components/lolly"
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/client";
 import "./index.css"
+import { navigate } from "gatsby";
 const GET_LOLLY=gql`
 {
   getLolly  {
-id,
-  c1,
-  c2,
-  c3,
-  sender,
-  message,
-  rec,
-  link,
+id 
+  c1 
+  c2 
+  c3 
+  sender 
+  message 
+  rec 
+  link 
 }
 }`
 
 const ADD_LOLLY = gql`
-mutation addLolly($c1: String!,      $c2: String!,      $c3: String!,      $sender: String!,      $message: String!,$rec: String!
-  $link:String!){
-  addLolly(c1: $c1,c2: $c2,c3:$c3,sender: $sender,message: $message, rec: $rec, link:$link){
+mutation addLolly($c1: String!,$c2: String!,$c3: String!, $sender: String!,$message: String!,$rec: String!){
+  addLolly(c1: $c1,c2: $c2,c3:$c3,sender: $sender,message: $message, rec: $rec){
     c1
     c2
     c3
     sender
     message
     rec
-    link
     }
     }`
 const IndexPage = () => {
@@ -49,12 +48,10 @@ const IndexPage = () => {
         sender:senderField.current.value,
         message:msgField.current.value,
         rec:recField.current.value,
-        link:"Link"
       },
-      refetchQueries: [{ query: GET_LOLLY }]
 
     })
-
+navigate("/template")
   }
   const {data,error,loading}=useQuery(GET_LOLLY)
 console.log(data)

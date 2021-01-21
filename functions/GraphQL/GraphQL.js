@@ -1,6 +1,7 @@
 const { ApolloServer, gql } = require('apollo-server-lambda')
 var faunadb = require('faunadb'),
   q = faunadb.query;
+  const shortid = require('shortid');
 const typeDefs = gql`
   type Query {
     getLolly : [Lolly!]
@@ -22,8 +23,7 @@ const typeDefs = gql`
       c3: String,
       sender: String,
       message: String,
-      rec: String,
-      link:String): Lolly
+      rec: String): Lolly
   }
 `
 const resolvers = {
@@ -37,7 +37,6 @@ const resolvers = {
             q.Lambda(x => q.Get(x))
           )
         );
-        console.log(result.data)
         return result.data.map(d => {
           return {
            id:d.ref.id,
@@ -48,8 +47,6 @@ const resolvers = {
            rec:d.data.rec,
            message:d.data.message,
            link:d.data.link
-
-
           }
         })
       }
@@ -57,10 +54,9 @@ const resolvers = {
         console.log(err)
       }
     }
-
   },
   Mutation: {
-    addLolly: async (_, { c1, c2, c3, sender, message, rec, link }) => {
+    addLolly: async (_, { c1, c2, c3, sender, message, rec }) => {
       try {
         var client = new faunadb.Client({ secret: process.env.FAUNADB_SECRET });
         let result = await client.query(
@@ -74,13 +70,13 @@ const resolvers = {
                  sender, 
                  message, 
                  rec, 
-                 link
+                 link:shortid.generate()
               }
 
             },
             )
             );
-            return result.data.id;
+            return result.data;
           } catch (err) {
             return err.toString();
           }
