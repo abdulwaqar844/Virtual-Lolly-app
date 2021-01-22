@@ -5,9 +5,11 @@ var faunadb = require('faunadb'),
 const typeDefs = gql`
   type Query {
     getLolly : [Lolly!]
-  }
+    lollyByPath(link:String):Lolly
+
+}
   type Lolly {
-    id: ID!,
+    id: ID,
     c1: String,
     c2: String,
     c3: String,
@@ -48,11 +50,18 @@ const resolvers = {
            message:d.data.message,
            link:d.data.link
           }
-        })
+        }
+        )
       }
       catch (err) {
         console.log(err)
       }
+    },
+    lollyByPath:async(_,{link})=>{
+      const result=await client.query(
+            query.Get(query.Match(query.Index("lolly"),link))
+          )
+          return result.data;
     }
   },
   Mutation: {
@@ -72,23 +81,29 @@ const resolvers = {
                  rec, 
                  link:shortid.generate()
               }
-
             },
             )
             );
-            return result.data;
-          } catch (err) {
+            return  {
+               id:result.ref.id,
+               c1:result.data.c1,
+               c2:result.data.c2,
+               c3:result.data.c3,
+               sender:result.data.sender,
+               rec:result.data.rec,
+               message:result.data.message,
+               link:result.data.link
+              
+            }       
+             } catch (err) {
             return err.toString();
           }
         },    
   }
 }
-
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 })
-
 const handler = server.createHandler()
-
 module.exports = { handler }

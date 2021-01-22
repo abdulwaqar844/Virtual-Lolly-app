@@ -15,48 +15,40 @@ const GET_DATA = gql`{
      link    
   }
 }`;
-export default function Template(getLolly) {
+export default function Template({pageContext}) {
   const { loading, error, data } = useQuery(GET_DATA);
-  console.log("query data in Template", data)
-  if (loading) {
+  console.log("query data in Te", data)
+  if (loading)
     return <h2>loading..</h2>
-  } if (error) {
+  if (error)
     return <h2>error</h2>
-  } return (
-
-    <div>
-      <h1>Share lolly with this link:</h1>
-      {data.getLolly.map((d, i) => {
-
-        console.log("In template return", d)
-
-
-        return (<>
-          <div className="container-lolly" key={d.id}>
-            <div  className="display-lolly">
-              <div className="lol" >
-                <Lolly top={d.c1} middle={d.c2} bottom={d.c3} />
-                <h1>{`http://localhost:8888/${d.link}`}</h1>
+  return (
+    <>
+      <div>
+        <h1>Share lolly with this link:</h1>
+            <div className="container-lolly">
+              <div key={pageContext.data.id} className="display-lolly">
+                <div className="lol">
+                  <Lolly top={pageContext.data.c1} middle={pageContext.data.c2} bottom={pageContext.data.c3} />
+                  <h1>{`http://localhost:8888/template/${pageContext.data.link}`}</h1>
+                </div>
+                <div className="resultCard">
+                  <p className="reciever">To:{pageContext.data.rec}</p>
+                  <p className="message">Message:{pageContext.data.message}</p>
+                  <p className="sender">From:{pageContext.data.sender}</p>
+                </div>
               </div>
-              <div className="resultCard"  >
-                <p className="reciever">To:{d.rec}</p>
-                <p className="message">Message:{d.message}</p>
-                <p className="sender">From:{d.sender}</p>
-
-              </div>
-            </div>
 
 
-          </div>   </>)
+            </div>   )
 
-      })}
 
-      <button onClick={() => navigate("/")}>Go Back</button>
+        <button onClick={() => navigate("/")}>Go Back</button>
 
 
 
 
 
-    </div>
-  )
+      </div>
+    </>)
 }

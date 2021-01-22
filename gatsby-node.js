@@ -1,30 +1,29 @@
 const path = require("path");
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(`
-  query MyQuery {
+  query {
+    getlolly {
         getLolly {
-        getLolly {
-        c1
-        c2
-        c3
-        link
-        message
-        rec
-        id
-        sender
+         id
+         c1
+         c2
+         c3
+         sender
+         rec
+         message
+         link      
       }
     }
   }
       `);
-      console.log(JSON.stringify(result))
-  result.data.forEach((d) => {
-        console.log("++++++++++++++++" , d)
+            result.data.getlolly.getLolly.forEach((d) => {
     createPage({
       path: `template/${d.link}`,
       component: path.resolve(`./src/pages/template.js`),
-      context: d,
+      context:{
+      data:result.data.getlolly
+      },
     });
-  });
+ });
 };

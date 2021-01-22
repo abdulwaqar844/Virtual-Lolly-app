@@ -28,8 +28,16 @@ module.exports = {
       },
     },
      "gatsby-plugin-typescript",
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+     {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // Arbitrary name for the remote schema Query type
+        typeName: "GETLOLLY",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "getlolly",
+        // Url to query from
+        url: "http://localhost:8888/.netlify/functions/GraphQL",
+      },
+    },
   ],
 }

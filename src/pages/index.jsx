@@ -3,10 +3,13 @@ import { useState } from "react";
 import { useRef } from "react";
 import Lolly from "./../components/lolly"
 import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/client";
+import {  useMutation } from "@apollo/client";
+//import { useQuery } from "@apollo/client";
+
 import "./index.css"
 import { navigate } from "gatsby";
-const GET_LOLLY=gql`
+
+/*const GET_LOLLY=gql`
 {
   getLolly  {
 id 
@@ -19,17 +22,19 @@ id
   link 
 }
 }`
-
+*/
 const ADD_LOLLY = gql`
 mutation addLolly($c1: String!,$c2: String!,$c3: String!, $sender: String!,$message: String!,$rec: String!){
   addLolly(c1: $c1,c2: $c2,c3:$c3,sender: $sender,message: $message, rec: $rec){
-    c1
-    c2
-    c3
-    sender
-    message
-    rec
-    }
+    id
+  c1
+  c2
+  c3
+  sender
+  message
+  rec
+  link
+  }
     }`
 const IndexPage = () => {
   const [addLolly]=useMutation(ADD_LOLLY)
@@ -50,11 +55,19 @@ const IndexPage = () => {
         rec:recField.current.value,
       },
 
-    })
-navigate("/template")
+    }).then(result => {
+      setTimeout(()=>navigate(`/template/${result.data.addLolly.link}`),5000)
+  });
+
+
   }
-  const {data,error,loading}=useQuery(GET_LOLLY)
-console.log(data)
+  /*const {data,error,loading}=useQuery(GET_LOLLY)
+console.log(data)*/
+// if (loading)
+  //   return <h2>loading..</h2>
+  // if (error)
+  //   return <h2>error</h2>
+
   return (
     <div className="container">
       <h1>Virtual Lolly App</h1>
