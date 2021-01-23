@@ -26,13 +26,6 @@ id
 const ADD_LOLLY = gql`
 mutation addLolly($c1: String!,$c2: String!,$c3: String!, $sender: String!,$message: String!,$rec: String!){
   addLolly(c1: $c1,c2: $c2,c3:$c3,sender: $sender,message: $message, rec: $rec){
-    id
-  c1
-  c2
-  c3
-  sender
-  message
-  rec
   link
   }
     }`
@@ -54,12 +47,9 @@ const IndexPage = () => {
         message:msgField.current.value,
         rec:recField.current.value,
       },
-
     }).then(result => {
-      setTimeout(()=>navigate(`/template/${result.data.addLolly.link}`),5000)
+      setTimeout(()=>navigate(`/lollies/${result.data.addLolly.link}`),5000)
   });
-
-
   }
   /*const {data,error,loading}=useQuery(GET_LOLLY)
 console.log(data)*/
