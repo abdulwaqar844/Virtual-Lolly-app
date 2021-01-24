@@ -1,5 +1,4 @@
 .container {
-    max-width: 600px;
     margin: 0 auto;
     box-shadow: 0 0 20px #8f7070;
     padding: 20px;
@@ -7,6 +6,8 @@
     text-align: center;
     background-color: #21212b;
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 .main-container {
     display: flex;
@@ -25,4 +26,16 @@
 
 .form-container > textarea {
     height: 250px;
+}
+.add-new{
+    margin-top: 1em;
+    box-shadow: 0 0 6px #fa73d9;
+    border: 2px solid #fa73d9;
+    background-color: transparent;
+    font-size: .9em;
+    color: #fa73d9;
+    padding: 1em 2em;
+    border-radius: 4em;
+    cursor: pointer;
+    transition: all .3s;
 }

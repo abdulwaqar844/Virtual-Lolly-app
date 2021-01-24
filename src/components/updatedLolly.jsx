@@ -1,8 +1,11 @@
 import React from "react"
-const lolly = ({top,middle,bottom}) => {
+import "./lolly.css"
+import { navigate } from "gatsby"
+const newlolly = ({ pageContext }) => {
+    console.log(pageContext)
     return (
-        <>
-            {/*?xml version="1.0" encoding="UTF-8"?*/}
+        <div className="container">
+            <div className="container-lolly">
             <svg className="lollipop" width="163px" height="431px" viewBox="0 0 163 431" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 <defs>
                     <path d="M50.5845697,1.80919445e-14 L112.757384,3.19744231e-14 C129.058949,2.89798741e-14 142.575449,12.6254516 143.685437,28.8891833 L162.453983,303.889183 C163.619754,320.970275 150.717838,335.762281 133.636746,336.928053 C132.934162,336.976004 132.230148,337 131.52593,337 L31,337 C13.8791728,337 -1.56668718e-14,323.120827 -1.77635684e-14,306 C-1.78535483e-14,305.265258 0.0261215736,304.530748 0.0783152276,303.797862 L19.662885,28.7978622 C20.8183904,12.5726406 34.3182545,1.0093501e-14 50.5845697,7.10542736e-15 Z" id="path-1" />
@@ -19,12 +22,12 @@ const lolly = ({top,middle,bottom}) => {
                             <use xlinkHref="#path-1" />
                         </mask>
                         <use className="lollyBottom"
-                            fill={bottom}
+                            fill={pageContext.c3}
                             fillRule="nonzero"
                             xlinkHref="#path-1" />
                         <rect
                             className="lollyTop"
-                            fill={top}
+                            fill={pageContext.c1}
                             fillRule="nonzero"
                             mask="url(#mask-2)"
                             x={-25}
@@ -33,7 +36,7 @@ const lolly = ({top,middle,bottom}) => {
                             height={134} />
                         <rect
                             className="lollyMiddle"
-                            fill={middle}
+                            fill={pageContext.c2}
                             fillRule="nonzero"
                             mask="url(#mask-2)"
                             x={-29}
@@ -53,7 +56,22 @@ const lolly = ({top,middle,bottom}) => {
                     </g>
                 </g>
             </svg>
-        </>
+            
+            </div>
+            <div className="detail-container">
+                <p>Share lolly with this link:</p>
+                <p className="share">{`http://localhost:8888/lollies/${pageContext.link}`}</p>
+                <div className="details">
+                    <p className="reciever">To:{pageContext.rec}</p>
+                    <p className="message">Message:{pageContext.message}</p>
+                    <p className="from">From:{pageContext.sender}</p>
+                </div>
+                <button className="return-home" onClick={() => navigate("/")}>Go Back</button>
+
+            </div>
+
+        </div>
+
     )
 }
-export default lolly;
+export default newlolly;
