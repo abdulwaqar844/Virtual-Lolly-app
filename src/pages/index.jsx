@@ -20,13 +20,14 @@ console.log(data)*/
       <div >
       <h1>virtual lollipop</h1>
       <p class="subtitle">because we all know someone who deserves some sugar.</p>
-        <Lolly top="#d52358" middle="#e95946" bottom="#deaa43" />
+      <div> <Lolly top="#d52358" middle="#e95946" bottom="#deaa43" />
         <Lolly top="#deaa43" middle="#d52358" bottom="#e95946" />
-        <Lolly top="#e95946"middle="#deaa43" bottom="#d52358" />
+        <Lolly top="#e95946"middle="#deaa43" bottom="#d52358" /></div>
+       
+        <button  onClick={()=>navigate(`/newLolly`)}>New Lolly</button>
 
       </div>
       
-      <button className="add-new" onClick={()=>navigate(`/newLolly`)}>New Lolly</button>
 
       </div>
     

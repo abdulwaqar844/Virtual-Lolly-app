@@ -29,10 +29,8 @@
 }
 .add-new{
     margin-top: 1em;
-    box-shadow: 0 0 6px #fa73d9;
-    border: 2px solid #fa73d9;
-    background-color: transparent;
-    font-size: .9em;
+    background-color: grey;
+    font-size: 1em;
     color: #fa73d9;
     padding: 1em 2em;
     border-radius: 4em;
