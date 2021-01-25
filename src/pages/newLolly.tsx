@@ -50,7 +50,7 @@ console.log(data)*/
   //   return <h2>error</h2>
 
   return (
-    <div className="container">
+    <div className="container-top">
       <div>     
          <h1>Virtual Lolly App</h1>
 </div>

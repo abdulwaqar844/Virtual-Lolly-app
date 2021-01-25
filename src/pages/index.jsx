@@ -16,7 +16,7 @@ console.log(data)*/
   //   return <h2>error</h2>
 
   return (
-    <div className="container">
+    <div className="container-top">
       <div >
       <h1>virtual lollipop</h1>
       <p class="subtitle">because we all know someone who deserves some sugar.</p>
