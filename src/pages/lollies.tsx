@@ -3,7 +3,7 @@ import { Router } from '@reach/router';
 import { useQuery,  } from '@apollo/client';
 import Lolly from '../components/updatedLolly';
 import gql from 'graphql-tag';
-
+import { ProgressBar } from 'react-bootstrap';
 const GET_LOLLY=gql`
 query MyQuery {
   
@@ -23,7 +23,7 @@ query MyQuery {
 export default function VirtualLolly() {
     const { data, loading, error } = useQuery(GET_LOLLY);
     if (loading) {
-        return <h1>Loading...</h1>
+        return <ProgressBar animated now={100} />
     }
     if (error) {
       return <h1>Error...</h1>
