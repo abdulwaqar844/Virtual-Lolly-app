@@ -88,7 +88,7 @@ console.log(data)*/
         rec:values.rec,
       },
     }).then(result => {
-      setTimeout(()=>navigate(`/lollies/${result.data.addLolly.link}`),5000)
+      navigate(`/lollies/${result.data.addLolly.link}`)
   });
             resetForm({})
 
