@@ -1,18 +1,37 @@
-.container1{
-    
-    margin-left: auto;
+.header{
+    text-align: center;
+    background-color: #21212b;
+    color: white;
+    display: flex;
+flex-direction: column;
+}
+.container-main{
+border-radius: 20px;
+margin-left: auto;
 margin-right: auto;
 display: flex;
 flex-direction: row;
+box-shadow: 0 0 20px #8f7070;
+padding: 0;
+margin-top: 35px; 
+
 }
-*{
-    margin: 0;
-    padding: 0;
+
+.title{
+text-align: center;
+font-weight: 600;
+margin-bottom: .2em;
+line-height: 1;
+font-family: Yellowtail,cursive;
+font-size: 2em;
 }
-@media (min-width: 400px){
-    body {
+.subtitle{
+    text-align: center;
     font-size: 18px;
-}}
+margin-top: 2px;
+margin-bottom: 1em;
+}
+
 .display-lolly{
     color: #dadadb;
 font-family: open-sans,Helvetica,sans-serif;
@@ -28,7 +47,7 @@ flex-direction: row;
 justify-content: center;
 align-items: center;
 }
-.return-home{
+.return-btn{
     font-size: 20px;
     padding: 4px;
     color: #fa73d9;
@@ -36,7 +55,7 @@ align-items: center;
     background-color: #000;
 }
 .detail-container{
-padding-left: 20px;
+padding-left: 2px;
 }
 p {
     margin-top: 2px;
@@ -51,23 +70,22 @@ p {
 }
 .reciever{
     font-family: Yellowtail,cursive;
-    font-size: 1.6em;
+    font-size: 1em;
     font-style: normal;
     text-shadow: #000 0 0 10px;
 }
 .from{
     font-family: Yellowtail,cursive;
-    font-size: 1.6em;
+    font-size: 1em;
     font-style: normal;
     text-shadow: #000 0 0 10px;
     padding-left: 2em;
 }
 .details{
-    padding: 1em 2em;
     margin-bottom: 1.5em;
     background-color: rgba(0,0,0,.2);
     box-shadow: 0 0 10px rgba(0,0,0,.6);
     text-align: left;
     font-style: italic;
-    font-size: 1.1em;
+    font-size: 1.4em;
 }

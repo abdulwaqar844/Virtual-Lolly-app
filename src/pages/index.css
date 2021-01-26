@@ -1,13 +1,22 @@
-.container {
+.container-top {
     margin: 0 auto;
     box-shadow: 0 0 20px #8f7070;
-    padding: 20px;
-    margin-top: 35px; 
     text-align: center;
     background-color: #21212b;
     color: white;
     display: flex;
     flex-direction: column;
+}
+.lollies{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;  
+}
+.title{
+    font-family: Yellowtail,cursive;
+    font-size: 1.5em;
 }
 .main-container {
     display: flex;

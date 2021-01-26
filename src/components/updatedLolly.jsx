@@ -1,10 +1,13 @@
 import React from "react"
-import "./lolly.css"
+import "./updateLolly.css"
 import { navigate } from "gatsby"
 const newlolly = ({ pageContext }) => {
     console.log(pageContext)
     return (
-        <div className="container1">
+        <div className="header">
+                <h1 className="title">virtual lollipop</h1>
+        <p class="subtitle">because we all know someone who deserves some sugar.</p>
+        <div className="container-main">
             <div className="container-lolly">
             <svg className="lollipop" width="163px" height="431px" viewBox="0 0 163 431" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 <defs>
@@ -56,7 +59,7 @@ const newlolly = ({ pageContext }) => {
                     </g>
                 </g>
             </svg>
-            
+
             </div>
             <div className="detail-container">
                 <p>Share lolly with this link:</p>
@@ -66,12 +69,12 @@ const newlolly = ({ pageContext }) => {
                     <p className="message">Message:{pageContext.message}</p>
                     <p className="from">From:{pageContext.sender}</p>
                 </div>
-                <button className="return-home" onClick={() => navigate("/")}>Go Back</button>
+                <button className="return-btn" onClick={() => navigate("/")}>Go Back</button>
 
             </div>
 
         </div>
-
+</div>
     )
 }
 export default newlolly;

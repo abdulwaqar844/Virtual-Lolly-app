@@ -23,7 +23,7 @@ query MyQuery {
 export default function VirtualLolly() {
     const { data, loading, error } = useQuery(GET_LOLLY);
     if (loading) {
-        return <ProgressBar animated now={100} />
+        return         <h2>Loading .... </h2>
     }
     if (error) {
       return <h1>Error...</h1>
